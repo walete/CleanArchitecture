@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CleanArchitecture.Domain;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace CleanArchitecture.Infrastructure.DataBase.SqlServer.Context
@@ -7,6 +8,7 @@ namespace CleanArchitecture.Infrastructure.DataBase.SqlServer.Context
     {
         private readonly IConfiguration _configuration = config;
 
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(_configuration.GetConnectionString("CleanArchitecture"), b => b.MigrationsAssembly("CleanArchitecture.Api"));
@@ -14,7 +16,7 @@ namespace CleanArchitecture.Infrastructure.DataBase.SqlServer.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            
         }
 
     }
